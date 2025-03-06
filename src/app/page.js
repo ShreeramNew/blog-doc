@@ -1,113 +1,147 @@
+"use client";
 import Image from "next/image";
+import { Carousel } from "./components/Carousel";
+import ShowCaseCard from "./components/ShowCaseCard";
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+   const CourseData = [
+      {
+         id: "1",
+         imageLink: "https://cdn.pixabay.com/photo/2021/11/14/18/36/telework-6795505_1280.jpg",
+         courseName: "Full-Stack Web Development",
+         description:
+            "Master MERN Stack (MongoDB, Express.js, React, Node.js). Learn to build full-stack applications from scratch, covering front-end, back-end, APIs, authentication, and deployment.",
+         price: "$199",
+      },
+      {
+         id: "2",
+         imageLink:
+            "https://cdn.pixabay.com/photo/2016/06/03/13/57/digital-marketing-1433427_1280.jpg",
+         courseName: "Digital Marketing & SEO Mastery",
+         description:
+            "Boost Your Brand with SEO, Ads & Social Media. Learn search engine optimization, Google Ads, social media marketing, and content strategies to grow any business online.",
+         price: "$179",
+      },
+      {
+         id: "3",
+         imageLink: "https://cdn.pixabay.com/photo/2017/10/01/14/56/communication-2805785_1280.jpg",
+         courseName: "Graphic Design & Branding",
+         description:
+            "Create Stunning Visuals with Photoshop & Illustrator. Learn to design logos, social media posts, and branding materials with Adobe tools. Perfect for aspiring designers and entrepreneurs.",
+         price: "$149",
+      },
+      {
+         id: "4",
+         imageLink: "https://cdn.pixabay.com/photo/2024/04/05/05/17/technology-8676540_1280.jpg",
+         courseName: "Personal Finance & Investing",
+         description:
+            "Master Money Management & Build Wealth. Learn budgeting, investing, stock market basics, and financial planning to secure your future.",
+         price: "$199",
+      },
+      {
+         id: "5",
+         imageLink: "https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010_1280.jpg",
+         courseName: "Photography & Videography Essentials",
+         description:
+            "Shoot Like a Pro with DSLR & Mobile. Learn camera settings, lighting, composition, and video editing to create high-quality content.",
+         price: "$159",
+      },
+      {
+         id: "6",
+         imageLink:
+            "https://cdn.pixabay.com/photo/2019/08/06/22/48/artificial-intelligence-4389372_1280.jpg",
+         courseName: "Psychology & Human Behavior",
+         description:
+            "Understand How the Mind Works. Explore cognitive psychology, emotional intelligence, and behavioral patterns to improve communication and decision-making.",
+         price: "$179",
+      },
+      {
+         id: "7",
+         imageLink: "https://cdn.pixabay.com/photo/2023/08/10/04/37/woman-8180786_1280.png",
+         courseName: "Yoga & Mindfulness Masterclass",
+         description:
+            "Achieve Inner Peace & Physical Strength. Learn meditation, breathing exercises, and yoga postures for better health and well-being.",
+         price: "$129",
+      },
+      {
+         id: "8",
+         imageLink:
+            "https://images.unsplash.com/photo-1590650046871-92c887180603?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHNwZWFraW5nfGVufDB8fDB8fHww",
+         courseName: "Language Learning",
+         description:
+            "Master Spanish in 30 Days. Learn essential grammar, pronunciation, and conversational Spanish with interactive exercises.",
+         price: "$149",
+      },
+      {
+         id: "9",
+         imageLink: "https://cdn.pixabay.com/photo/2019/11/18/03/24/dj-4633915_1280.jpg",
+         courseName: "Music Production & Beat Making",
+         description:
+            "Create Professional Tracks with FL Studio & Ableton. Learn music theory, audio mixing, and beat production for electronic and hip-hop genres.",
+         price: "$199",
+      },
+      {
+         id: "10",
+         imageLink: "https://cdn.pixabay.com/photo/2025/01/18/09/12/ai-generated-9341711_1280.png",
+         courseName: "Cooking & Culinary Arts",
+         description:
+            "Master the Art of Cooking Like a Chef. Learn knife skills, plating, international cuisines, and healthy meal preparation.",
+         price: "$99",
+      },
+   ];
+
+   useEffect(() => {
+      {
+         console.log(
+            CourseData.map(({ id, imageLink, courseName, description, price }) => (
+               <ShowCaseCard
+                  key={id}
+                  id={id}
+                  imageLink={imageLink}
+                  courseName={courseName}
+                  description={description}
+                  price={price}
+               />
+            ))
+         );
+      }
+   }, []);
+
+   return (
+      <div className=" flex bg-[#f6f5ea] h-fit">
+         <div className=" h-screen  w-[23rem] border-r-2  flex-shrink-0"></div>
+         <div className="p-[2rem] flex-grow border- border-red-900 w-[calc(100vw-24rem)]">
+            <div className=" text-3xl text-gray-800 font-semibold ">
+               Creating a Smooth Carousel Slider Component in React/NextJs
+            </div>
+            <div className=" text-gray-700 text-[1.3rem] mt-4 max-w-[90%] mb-[3rem] ">
+               This blog post delves into the creation of a custom carousel slider component using
+               React. Our carousel, aptly named Carousel, allows you to showcase various content
+               cards with fluid navigation controls. Whether you're highlighting featured products,
+               client testimonials, or portfolio items, this component offers flexibility and
+               elegance. <br /> <br /> We'll explore how to implement this carousel, discuss its key
+               features such as loop navigation and customizable gap between cards, and provide
+               insights into handling responsive behavior. By the end, you'll have a solid
+               understanding of how to integrate and customize this carousel in your own React
+               projects, enhancing user engagement with dynamic content display.
+            </div>
+
+            <div className=" text-2xl text-gray-800 mb-[4rem]">#Demo</div>
+
+            <Carousel>
+               {CourseData.map(({ id, imageLink, courseName, description, price }) => (
+                  <ShowCaseCard
+                     key={id}
+                     id={id}
+                     imageLink={imageLink}
+                     courseName={courseName}
+                     description={description}
+                     price={price}
+                  />
+               ))}
+            </Carousel>
+         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+   );
 }
