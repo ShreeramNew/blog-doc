@@ -7,6 +7,7 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import Step1 from "./components/sections/Step1";
 import { DM_Serif_Text } from "next/font/google";
 import Step2 from "./components/sections/Step2";
+import { FaGithub } from "react-icons/fa";
 
 const dmSerif = DM_Serif_Text({ subsets: ["latin-ext"], weight: "400" });
 
@@ -116,7 +117,7 @@ export default function Home() {
 
    return (
       <div className=" flex bg-[#191919] h-fit">
-         <div className=" hidden md:block h-screen  w-[23rem] border-r-2  flex-shrink-0"></div>
+         {/* <div className=" hidden md:block h-screen  w-[23rem] border-r-2  flex-shrink-0"></div> */}
          <div className="p-[0rem] md:p-[2rem] flex-grow border- border-red-900 w-full md:w-[calc(100vw-24rem)]">
             <div className=" text-[2.8rem] my-[2rem] text-white font-bold max-w-[65rem] ">
                Creating a <span className={` text-[#996ec8]`}>Smooth Carousel Slider </span>{" "}
@@ -150,6 +151,17 @@ export default function Home() {
             </Carousel>
             <Step1 />
             <Step2 />
+            <div className=" text-[1.4rem] my-[4rem] text-[#cbcbcb] font-semibold">
+               Building a custom carousel slider in React/Next.js gives you full control over its
+               behavior and appearance. With the ability to customize navigation, adjust gaps
+               between cards, and enable looping, this component is both powerful and reusable for
+               various use cases.
+               <div className=" mt-[2rem]"> Keep experimenting and happy coding!🚀</div>
+            </div>
+
+            <a href="https://github.com/ShreeramNew" className=" text-[#cbcbcb]">
+               <FaGithub size={25} />
+            </a>
          </div>
       </div>
    );
