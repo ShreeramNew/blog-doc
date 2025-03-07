@@ -3,6 +3,12 @@ import Image from "next/image";
 import { Carousel } from "./components/Carousel";
 import ShowCaseCard from "./components/ShowCaseCard";
 import { useEffect } from "react";
+import { MdOutlineContentCopy } from "react-icons/md";
+import Step1 from "./components/sections/Step1";
+import { DM_Serif_Text } from "next/font/google";
+import Step2 from "./components/sections/Step2";
+
+const dmSerif = DM_Serif_Text({ subsets: ["latin-ext"], weight: "400" });
 
 export default function Home() {
    const CourseData = [
@@ -109,13 +115,14 @@ export default function Home() {
    }, []);
 
    return (
-      <div className=" flex bg-[#f6f5ea] h-fit">
-         <div className=" h-screen  w-[23rem] border-r-2  flex-shrink-0"></div>
-         <div className="p-[2rem] flex-grow border- border-red-900 w-[calc(100vw-24rem)]">
-            <div className=" text-3xl text-gray-800 font-semibold ">
-               Creating a Smooth Carousel Slider Component in React/NextJs
+      <div className=" flex bg-[#191919] h-fit">
+         <div className=" hidden md:block h-screen  w-[23rem] border-r-2  flex-shrink-0"></div>
+         <div className="p-[0rem] md:p-[2rem] flex-grow border- border-red-900 w-full md:w-[calc(100vw-24rem)]">
+            <div className=" text-[2.8rem] my-[2rem] text-white font-bold max-w-[65rem] ">
+               Creating a <span className={` text-[#996ec8]`}>Smooth Carousel Slider </span>{" "}
+               Component in React/NextJs
             </div>
-            <div className=" text-gray-700 text-[1.3rem] mt-4 max-w-[90%] mb-[3rem] ">
+            <div className=" text-[#cbcbcb] text-[1.3rem] mt-4 max-w-[90%] mb-[3rem] ">
                This blog post delves into the creation of a custom carousel slider component using
                React. Our carousel, aptly named Carousel, allows you to showcase various content
                cards with fluid navigation controls. Whether you're highlighting featured products,
@@ -127,7 +134,7 @@ export default function Home() {
                projects, enhancing user engagement with dynamic content display.
             </div>
 
-            <div className=" text-2xl text-gray-800 mb-[4rem]">#Demo</div>
+            <div className=" text-2xl text-white mb-[4rem]">#Demo</div>
 
             <Carousel>
                {CourseData.map(({ id, imageLink, courseName, description, price }) => (
@@ -141,6 +148,8 @@ export default function Home() {
                   />
                ))}
             </Carousel>
+            <Step1 />
+            <Step2 />
          </div>
       </div>
    );
