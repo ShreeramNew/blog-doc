@@ -116,7 +116,7 @@ export default function Home() {
    }, []);
 
    return (
-      <div className=" flex bg-[#191919] h-fit">
+      <div className=" flex bg-[#191919] h-fit pl-[0rem]">
          {/* <div className=" hidden md:block h-screen  w-[23rem] border-r-2  flex-shrink-0"></div> */}
          <div className="p-[0rem] md:p-[2rem] flex-grow border- border-red-900 w-full md:w-[calc(100vw-24rem)]">
             <div className=" text-[2.8rem] my-[2rem] text-white font-bold max-w-[65rem] ">
@@ -137,7 +137,7 @@ export default function Home() {
 
             <div className=" text-2xl text-white mb-[4rem]">#Demo</div>
 
-            <Carousel>
+            <Carousel gap={2}>
                {CourseData.map(({ id, imageLink, courseName, description, price }) => (
                   <ShowCaseCard
                      key={id}

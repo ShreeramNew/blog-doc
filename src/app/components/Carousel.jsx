@@ -12,6 +12,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export const Carousel = ({ children, gap = 2, loopRequired = false }) => {
    const [translateValue, setTranslateValue] = useState(0);
+   const [startX, setStartX] = useState(0);
 
    const movRef = useRef();
    const maxMove = useRef(0); // The maximum move value, after which sliding is not required
@@ -76,6 +77,25 @@ export const Carousel = ({ children, gap = 2, loopRequired = false }) => {
       };
    }, []);
 
+   const handleTouchStart = (e) => {
+      setStartX(e.touches[0].clientX);
+   };
+
+   const handleTouchMove = (e) => {
+      e.preventDefault();
+   };
+
+   const handleTouchEnd = (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diffX = startX - endX;
+
+      if (diffX > 50) {
+         handleNext();
+      } else if (diffX < -50) {
+         handlePrev();
+      }
+   };
+
    //Click next
    const handleNext = () => {
       setTranslateValue((prev) =>
@@ -103,13 +123,17 @@ export const Carousel = ({ children, gap = 2, loopRequired = false }) => {
          <div
             ref={parentRef}
             className="w-full gap-[3rem] border- border-red-900 flex flex-col justify-start items-start overflow-hidden pb-[2rem]"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
          >
             <div
                style={{
                   transform: `translateX(${translateValue}rem)`,
                   gap: `${gap}rem`,
+                  // padding:`0rem ${gap}rem`
                }}
-               className={`flex justify-start items-center border- border-blue-900 transition-all duration-500 px-[${gap}rem] `}
+               className={`flex justify-start items-center border- border-blue-900 transition-all duration-500 px-[1.1rem]  `}
                ref={movRef}
             >
                {finalChildrens}

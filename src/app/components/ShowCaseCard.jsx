@@ -5,7 +5,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 export default function ShowCaseCard({ id, imageLink, courseName, description, price }) {
    return (
-      <div className=" bg-black w-[20rem] md:w-[26rem] h-[24rem] flex flex-col justify-start items-start flex-shrink-0 relative shadow-xl ">
+      <div className=" bg-black w-[22rem] md:w-[26rem] h-[24rem] flex flex-col justify-start items-start flex-shrink-0 relative shadow-xl ">
          <div className=" w-full h-[18rem] overflow-hidden relative">
             <Image
                fill
